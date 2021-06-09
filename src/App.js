@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/main.css';
+import './styles/cards.css';
+import './styles/cards.css';
+
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {React, useEffect, useState} from 'react';
+import {getAllHeross, getHero} from './services/Hero';
+
+import Card from './components/Card'
+import Home from './components/Home'
+import NavBar from './components/NavBar';
 
 function App() {
+
+  const getItems = async () => {
+
+    
+    
+   } 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+
+      <Switch>
+        
+        {/* Ruta para la home/index - La Home contiene un ListadoCards, el cual a su vez contiene Cards */}
+        <Route path="/">
+          
+          <NavBar></NavBar>
+
+          <Home></Home>
+          
+        </Route>
+
+        
+
+
+      </Switch>
+
+    </BrowserRouter>
+
   );
 }
 
