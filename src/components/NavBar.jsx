@@ -26,7 +26,7 @@ const NavBar = (props) => {
                         <div id="categorias" className="col-md-6">
 
                             <ul className="menu menu m-0">
-                            <NavLink to={`/category/1`}><li className="">Category
+                            <NavLink to={`/category/1`}><li className=""> Category
                                     <ul className="pb-2">
                                         <li className="p-1"><a href="">Lorem</a></li>
                                         <li className="p-1"><a href="">Lorem</a></li>

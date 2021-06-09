@@ -12,7 +12,7 @@ import NavBar from './components/NavBar';
 
 function App() {
 
-  const [url, setUrl] = useState(``);
+  const [baseUrl, setBaseUrl] = useState(`https://www.superheroapi.com/api.php/10209071625985776/`);
   const [loading, setLoading] = useState(true)
   
   // https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}
@@ -21,16 +21,19 @@ function App() {
 
    useEffect(() => {
 
-    async function fetchData(){
-
-      let response = await getAllHeros(url);
-      
-      setLoading(false)
-
-    
-   } 
+    fetchData(baseUrl);
 
    }, [])
+
+   async function fetchData(url){
+
+    let response = await getAllHeros(url + '/1');
+
+    console.log("response-name: " + response.name);
+    
+    setLoading(false)
+  
+  } 
 
   return (
 
@@ -45,7 +48,7 @@ function App() {
           
           {
             
-            loading ? 
+            !loading ? 
 
             <Home></Home>
 
