@@ -10,7 +10,7 @@ export async function getHero(url) {
     });
 }
 
-export async function getAllHeross(url) {
+export async function getAllHeros(url) {
     return new Promise((resolve, reject) => {
         fetch(url)
         .then(res => res.json())

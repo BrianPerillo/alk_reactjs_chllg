@@ -4,7 +4,7 @@ import './styles/cards.css';
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {React, useEffect, useState} from 'react';
-import {getAllHeross, getHero} from './services/Hero';
+import {getAllHeros, getHero} from './services/Hero';
 
 import Card from './components/Card'
 import Home from './components/Home'
@@ -12,11 +12,25 @@ import NavBar from './components/NavBar';
 
 function App() {
 
-  const getItems = async () => {
+  const [url, setUrl] = useState(``);
+  const [loading, setLoading] = useState(true)
+  
+  // https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}
+
+
+
+   useEffect(() => {
+
+    async function fetchData(){
+
+      let response = await getAllHeros(url);
+      
+      setLoading(false)
 
     
-    
    } 
+
+   }, [])
 
   return (
 
@@ -28,9 +42,20 @@ function App() {
         <Route path="/">
           
           <NavBar></NavBar>
-
-          <Home></Home>
           
+          {
+            
+            loading ? 
+
+            <Home></Home>
+
+            : 
+
+            <p>Loading...</p>
+
+          }
+
+
         </Route>
 
         
