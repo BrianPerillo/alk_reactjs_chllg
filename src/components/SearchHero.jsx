@@ -16,6 +16,8 @@ const SearchHero = () => {
     const [heros, setHeros] = useState([]);
     const [loading, setLoading] = useState(true)
 
+    const [allHeros, setAllHeros] = useState(true)
+
     function agregarHero(hero){
 
         setHeros((heros) => heros.concat(hero));
@@ -35,8 +37,10 @@ const SearchHero = () => {
 
     useEffect(() => {
 
-        getAllHeros(baseUrl, agregarHero);
-        
+        if(allHeros == true){
+            getAllHeros(baseUrl, agregarHero);
+        }
+
         setLoading(false)
         
     }, [])
