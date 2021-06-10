@@ -31,4 +31,6 @@ export async function getAllHeros(url, agregarHero) {
         });
     }
 
+    
+
 }
