@@ -10,21 +10,48 @@ import Card from '../components/Card';
 
 const ListadoCards = (props) => {
 
+    const [heros, setHeros] = useState([]);
+    const [trajoDatos, setTrajoDatos] = useState(false);
+    const [category, setCategory] = useState();
+    const [category_id, setCategory_id] = useState();
+    // const {id} = useParams();
 
-useEffect(() => {
+    useEffect(() => {
+        
+        let pedidoHeros = new Promise((resolve, reject)=>{
+
+            setTimeout(()=> {
+                const heros = props.heros
+                resolve(heros) 
+            },0)
+            
+            })
+            .then((heros)=>{
+                console.log("heros_listado:");
+                console.log(heros);
+                setHeros(heros);
+                setTrajoDatos(true);
+            })
+
+
+        }, [])
+
     
-    
-
-}, [])
-
-console.log(props.pokemonData);
 
     return ( 
         
         <Fragment>
-                  
-            <Card />
+                  <div className="container">
+                    <div className="row">
+                        {
+                            props.heros.map((hero) =>
 
+                                <Card hero={hero}/>
+
+                            )
+                        }
+                    </div>
+                </div>
         </Fragment>
 
 

@@ -26,15 +26,6 @@ h3{
  text-align:center;
 }
 
-#cart{
-  color: grey;
-  transition: all 300ms;
-}
-
-#cart:hover{
-  color: orange;
-}
-
 
 header nav div .menu {
     float:left;
@@ -72,12 +63,6 @@ header nav div .menu li ul li a {
 header nav div .menu li ul li a:hover {
     text-decoration: none;
     font-weight: bold;
-}
-
-#cart div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Index Section */
