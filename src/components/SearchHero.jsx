@@ -16,7 +16,7 @@ const SearchHero = () => {
     const [heros, setHeros] = useState([]);
     const [loading, setLoading] = useState(true)
 
-    const [allHeros, setAllHeros] = useState(true)
+    const [loadFirsts, setLoadFirsts] = useState(false)
 
     function agregarHero(hero){
 
@@ -37,13 +37,20 @@ const SearchHero = () => {
 
     useEffect(() => {
 
-        if(allHeros == true){
-            getAllHeros(baseUrl, agregarHero);
-        }
+        /* 
+        Arracno limpiando el array heros ( setHeros([]) ) - Si se realiza una búsqueda por nombre, y luego se vacía el input, se ejecuta este useEffect 
+        (por que se modifica el loadFirsts desde el FormHero) y para que no concatene sino que vuelva a mostrar los resultados originales, se vacía el array.
+        */ 
+
+        setHeros([])
+
+        getAllHeros(baseUrl, agregarHero);
+        console.log("heros_seteados" + heros);
 
         setLoading(false)
         
-    }, [])
+        
+    }, [loadFirsts])
 
     
     
@@ -51,16 +58,16 @@ const SearchHero = () => {
         
         <Fragment> 
 
-                <FormHero/>
+                <FormHero setHeros={setHeros} setLoadFirsts={setLoadFirsts} loadFirsts={loadFirsts}/>
                 
                 {
-                    heros.length < 8 ?
-                   
-                    <p>Loading ...</p>
+                    heros.length > 0 ?
+                    
+                        <ListadoCards heros={heros}/>  
                     
                     : 
 
-                    <ListadoCards heros={heros}/>  
+                        <p>Loading ...</p>
                 }
 
         </Fragment>

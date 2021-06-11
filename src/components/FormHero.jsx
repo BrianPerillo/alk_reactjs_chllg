@@ -12,7 +12,7 @@ import axios from 'axios';
 // import {getAllHeros, getHero} from '../services/Hero';
 
 
-const FormHero = () => {
+const FormHero = (props) => {
 
 
     const [baseUrl, setBaseUrl] = useState(`https://www.superheroapi.com/api.php/10209071625985776/search/`);
@@ -20,24 +20,28 @@ const FormHero = () => {
     const [filteredHeros, setFilteredHeros] = useState([])
 
 
-    const handleOnChange = (e) => {
+    const handleOnChange = async (e) => {
     
-        setName(e.target.value)
-        
+        const name = e.target.value
+        getHeros(baseUrl, name);
+
     }
     
     const getHeros = async (url, name) => {
     
         const res = await axios.get(baseUrl + name)
-        .then(res => setFilteredHeros(res.data.results))
+        .then(
+            res => res.data.response == 'success' ?
+                props.setHeros(res.data.results)
+            :
+                props.setLoadFirsts(prevloadFirsts => !prevloadFirsts)
+            )
     
     }
     
     useEffect(() => {
 
-        getHeros(baseUrl, name)
-        console.log(baseUrl + name);
-        console.log('Filtered Heros' + filteredHeros);
+        
     }, [name])
 
 
@@ -53,21 +57,6 @@ const FormHero = () => {
                     </div>
                 </form>
                 
-                {
-                    filteredHeros != null ?
-
-                        filteredHeros.map((hero) =>
-
-                            <p>{hero.name}</p>
-                        
-                        )
-
-                    :
-
-                        <p></p>
-                }
-                
-
         </Fragment>
 
 
