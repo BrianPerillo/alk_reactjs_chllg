@@ -1,18 +1,21 @@
 import './styles/main.css';
 import './styles/cards.css';
 import './styles/detailcard.css';
+import './styles/login.css';
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {React, useEffect, useState} from 'react';
+import {Fragment, React, useEffect, useState} from 'react';
 
 import Card from './components/Card'
 import HeroDetail from './components/HeroDetail'
+import Login from './components/Login';
 import NavBar from './components/NavBar';
 import SearchHero from './components/SearchHero'
 import Team from './components/Team';
 
 function App() {
 
+  const [login, setLogin] = useState(false)
 
    useEffect(() => {
 
@@ -28,24 +31,44 @@ function App() {
 
 
         <Route exact path="/">
-          
-          <NavBar></NavBar>
-          <Team/>
+
+          {
+              login == false ? 
+              <Login setLogin={setLogin}/>
+            : 
+              <Fragment>
+                <NavBar></NavBar>
+                <Team/>
+              </Fragment>
+          }
 
         </Route>
 
         <Route path="/search">
-          
-          <NavBar></NavBar>
-          <SearchHero/>
+
+          {
+              login == false ? 
+              <Login setLogin={setLogin}/>
+            : 
+              <Fragment>
+                <NavBar></NavBar>
+                <SearchHero/>
+              </Fragment>
+          }
 
         </Route>
 
         <Route path="/hero_detail/:id">
-          
-          <NavBar></NavBar>
-          
-          <HeroDetail/>
+
+          {
+              login == false ? 
+                <Login setLogin={setLogin}/>
+            : 
+              <Fragment>
+                <NavBar></NavBar>
+                <HeroDetail/>
+              </Fragment>
+          }
 
         </Route>
 
