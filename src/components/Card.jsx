@@ -31,8 +31,10 @@ const Card = (props) => {
             <div className="col-md-3 p-3">
                 <div className="profile-card-1">
                 
-                    <div className="img"><img src={props.hero.image.url}/></div>
-                    <Link to={``} // Paso el nombre del pokemon para la URL y offset y limit para volver a última página visitada
+                    <div className="img">
+                        <img src={props.hero.image.url}/>
+                    </div>
+                    <Link to={'/hero_detail/' + props.hero.id}
                         style={{textDecoration: 'none', color:'white'}}>
                         <button className="btn btn-propio">
                             <a className="view-more">

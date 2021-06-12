@@ -1,0 +1,178 @@
+  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/
+    /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/
+      /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/  /*DETALLE:*/
+
+      .mid-section-detail{
+        margin-top:200px;
+      }
+
+      #detail-container {
+        margin-top:130px
+      }
+
+      .profile-card-1_detail {
+        /* width: 300px; */
+        height: 100%;
+        background: white;
+        margin: 0 auto;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 4px 4px 10px #999;
+        position: relative;
+        box-sizing: border-box;
+      }
+      .profile-card-1_detail .view-more {
+        position: relative;
+        /* top: calc(30.5% - .5em); */
+        top:7px;
+        left: calc(50% - .5em);
+        z-index: 2;
+        color: #f9400b;
+        font-size: 2em;
+      }
+      .profile-card-1_detail .view-more .fa-plus-circle {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        width: 1.004em;
+      }
+      .profile-card-1_detail .view-more .fa-plus-circle:hover {
+        background: #f9400b;
+        color: white;
+      }
+      .profile-card-1_detail .popup {
+        height: 500px;
+        width: 500px;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .profile-card-1_detail .mid-section {
+      /*position: absolute;*/
+        /* height: 200px; */
+        margin-top:150px;
+        width: 100%;
+        top: 200px;
+        left: 0;
+        padding: 0px 20px 0;
+        box-sizing: border-box;
+        background: white;
+        z-index: 10000000;
+        border-radius: 10px;
+      }
+      .profile-card-1_detail .mid-section .name {
+        color: #333333;
+        font-size: 1.4em;
+        padding-top: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: bold;
+      }
+      .profile-card-1_detail .mid-section .description {
+        color: gray;
+        font-size: 0.9em;
+        padding-bottom: 5px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .profile-card-1_detail .mid-section .description a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .profile-card-1_detail .mid-section .line {
+        background: #f9400b;
+        width: 80%;
+        height: 2px;
+        margin: 5px auto -3px;
+      }
+      .profile-card-1_detail .mid-section .stats {
+        display: flex;
+        /* position: absolute; */
+        left: 10%;
+        /* padding-top: 10px;
+        width: 80%; */
+        justify-content: space-around;
+        margin-bottom: 15px;
+      }
+      .profile-card-1_detail .mid-section .stats .stat {
+        font-size: 1.3em;
+        color: #333333;
+        padding: 5px;
+        font-weight: bold;
+      }
+      .profile-card-1_detail .mid-section .stats .subtext {
+        color: gray;
+        font-size: 0.6em;
+        font-weight: normal;
+      }
+    
+      .profile-card-1_detail .detail_img{
+        height: 200px;
+        width: 100%;
+        background-image: linear-gradient(#ff7b53, #f9400b), url("https://static.pexels.com/photos/21014/pexels-photo-medium.jpg");
+        padding: 25px;
+        box-sizing: border-box;
+        position: relative;
+        border-radius: 10px 10px 0px 0px;
+      }
+    
+      .profile-card-1_detail .detail_img img {
+        width: 68%;
+        /* height: 170%; */
+        padding: 3px;
+        border-radius: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.6);
+        position: relative;
+        top: -100px;
+      }
+    
+      .profile-card-1_detail .links {
+        width: 100%;
+        height: 50px;
+        background: #F2F2F2;
+        border-top: 1px solid #f9400b;
+        margin-top: 35px;
+        border-radius: 5px;
+        color: white;
+        font-size: 2em;
+        line-height: 1.5em;
+        position: absolute;
+        bottom: 0;
+      }
+      .profile-card-1_detail .links a {
+        color: white;
+      }
+      .profile-card-1_detail .links .fb {
+        position: absolute;
+        left: 0;
+        width: 25%;
+        height: 100%;
+        background-color: #3b5998;
+      }
+      .profile-card-1_detail .links .fb:hover {
+        background-color: #4264aa;
+      }
+      .profile-card-1_detail .links .twitter {
+        position: absolute;
+        left: 25%;
+        width: 25%;
+        height: 100%;
+        background-color: #55ACEE;
+      }
+      .profile-card-1_detail .links .twitter:hover {
+        background-color: #6cb7f0;
+      }
+      .profile-card-1_detail .links .follow {
+        position: absolute;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+        background-color: #f9400b;
+      }
+      .profile-card-1_detail .links .follow:hover {
+        background-color: #f9400b;
+      }
+    
+    
+    
+    
