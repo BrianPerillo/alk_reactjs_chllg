@@ -19,7 +19,12 @@ const Team = (props) => {
     return ( 
         <Fragment>
             
-           <p>Team</p>
+        {
+            props.team.map((hero) =>
+             <p>{hero.hero.name}</p>
+            )
+           
+        }
 
         </Fragment>
 

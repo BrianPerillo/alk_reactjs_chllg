@@ -12,15 +12,40 @@ import Login from './components/Login';
 import NavBar from './components/NavBar';
 import SearchHero from './components/SearchHero'
 import Team from './components/Team';
+import {db} from './firebase';
 
 function App() {
 
   const [login, setLogin] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [team, setTeam] = useState([])
+
+  const getTeam = async () => {
+
+    db.collection('team').onSnapshot((querySnapshot) => {
+     querySnapshot.forEach((doc) => {
+       var hero = doc.data()
+       hero.hero.doc_id = doc.id
+      //  console.log("herooo" + hero.hero.doc_id);
+       console.log(hero)
+       setTeam((team) => team.concat(hero))
+     });
+     setLoading(false)
+    });
+    
+   } 
 
    useEffect(() => {
 
+    getTeam();
+   
+
   }, [])
-  
+
+  // if(){
+  //   console.log("team" + team.hero.name);
+  // }
+
   return (
 
     <BrowserRouter>
@@ -33,12 +58,12 @@ function App() {
         <Route exact path="/">
 
           {
-              login == false ? 
-              <Login setLogin={setLogin}/>
-            : 
+            //   login == false ? 
+            //   <Login setLogin={setLogin}/>
+            // : 
               <Fragment>
                 <NavBar></NavBar>
-                <Team/>
+                <Team team={team}/>
               </Fragment>
           }
 

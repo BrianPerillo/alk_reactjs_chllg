@@ -12,6 +12,10 @@ const Login = (props) => {
         e.preventDefault()
         const res = await axios.post('http://challenge-react.alkemy.org/',  { email: email, password: password})
         .then(res => res.status == 200 ? props.setLogin(true) : props.setLogin(false))
+        // .then(fs.writeFile("thing.json", dictstring, function(err, result) {
+        //     if(err) console.log('error', err);
+        // })  
+        // )
    
     } 
 
