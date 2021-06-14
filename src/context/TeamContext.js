@@ -43,19 +43,25 @@ const getTeamSize = async () => {
 
 const add_hero = async (hero) => {
   setHeros([])
-  const heros = db.collection("heros");
 
-  const newHero = {
-      hero
+  //Agrego un nuevo Hero, solo en caso de que el team tenga menos de 6 personajes
+  if(teamLength < 6){
+
+    const heros = db.collection("heros");
+
+    const newHero = {
+        hero
+    }
+  
+    heros.add(newHero).then(() => {
+        console.log('success'); //SUCCESS
+    }).catch(err => {
+        setError(err); //ERROR
+    }).finally(() => {
+        setLoading(false);
+    })
+
   }
-
-  heros.add(newHero).then(() => {
-      console.log('success'); //SUCCESS
-  }).catch(err => {
-      setError(err); //ERROR
-  }).finally(() => {
-      setLoading(false);
-  })
 
 }
 
