@@ -8,21 +8,17 @@ import React, {Fragment, useEffect, useState} from 'react'
 
 const Card = (props) => {
 
-    // //Tomo el nombre del pokemon desde la prop que recibo:
-    // const nombre = props.pokemon.forms.map(nombre => {
-    //     return (nombre.name)
-    // })
-    // console.log("nombre");
 
-    // const [powerStates, setPowerStates] = useState([])
+    const handleOnSubmit = (e) => {
+
+        e.preventDefault();
+        
+        props.deleteHero(props.hero.doc_id);
+    }
 
     useEffect(() => {
 
-        // for (const propiedad in props.hero.powerstats) {
-          
-        //     setPowerStates((powerStates) => powerStates.concat(`${propiedad}: ${props.hero.powerstats[propiedad]}`))
-        // }
-        
+
     }, [])
 
     return ( 
@@ -70,13 +66,18 @@ const Card = (props) => {
                         </div>
                         {/* <div className="line"></div> */}
                         <div className="stats mt-4">
-                        {/* <div className="stat">81.3M
-                            <div className="subtext">Favoritos</div>
-                        </div>
-                        <div className="stat">822k
-                            <div className="subtext">Likes</div>
-                        </div> */}
-   
+
+                        {
+                            props.teamView ?
+
+                            <form onSubmit={handleOnSubmit}>
+                                <button type='submit' name="delete" className="btn btn-danger">Eliminar</button>
+                            </form>
+
+                        :
+                            <div className="stat">
+                            </div>  
+                        }
                         </div> 
                     
                     </div>
@@ -84,6 +85,7 @@ const Card = (props) => {
                 
                 </div>
             </div>
+
 
         </Fragment>
 

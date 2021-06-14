@@ -40,7 +40,7 @@ const HeroDetail = () => {
         const newHero = {
             hero
         }
-    
+        
         heros.add(newHero).then(() => {
             console.log('success'); //SUCCESS
         }).catch(err => {
@@ -68,7 +68,8 @@ const HeroDetail = () => {
         <Fragment>
 
             {
-                bool == true ?
+                
+            bool == true ?
 
             <div id="main_detail_container" className="mt-5">
                 <div className="col-md-7 col-lg-8 col-xl-4 p-3 m-auto">
