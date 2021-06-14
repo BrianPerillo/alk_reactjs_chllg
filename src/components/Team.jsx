@@ -4,26 +4,22 @@ import {
     BrowserRouter as Router,
     Switch
 } from 'react-router-dom';
-import React, {Fragment, useEffect, useState} from 'react'
+import React, {Fragment, useEffect, useState, useContext} from 'react'
 import {db} from '../firebase';
 import Card from './Card'
 
 import ListadoCards from '../components/ListadoCards'
+import {TeamContext} from '../context/TeamContext';
 
 const Team = (props) => {
 
-    const [docId, setDocId] = useState()
-
-
-    const deleteHero = async (doc_id) => {
-        await db.collection('heros').doc(doc_id).delete()
-        .then(console.log('Deleteddd'));
-    }
+    const teamContext = useContext(TeamContext) //guardo context
 
     useEffect(() => {
 
+        teamContext.getTeam() // Cada vez que se cargue este componente consulta el team    
+        teamContext.getTeamSize();
 
-        
     }, [])
 
     return ( 
@@ -31,18 +27,13 @@ const Team = (props) => {
 
             <div className="container">
                 <div className="row">   
+                <p>{teamContext.teamLength}</p>
                     {
-                        props.heros.map((hero) =>
 
-                         <Card hero={hero.hero} teamView={true} deleteHero={deleteHero} />
+                        teamContext.heros.map((hero) =>
 
-                            // <div>
-                            //     <p>{hero.hero.name}</p> 
-                            //     <form onSubmit={handleOnSubmit}>
-                                    
-                            //         <button type='submit' name="delete" value={hero.hero.doc_id}>Eliminar del equipo</button>
-                            //      </form>
-                            // </div>
+                         <Card hero={hero.hero} teamView={true} />
+
                         )
                     
                     }

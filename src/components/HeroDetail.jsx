@@ -4,14 +4,16 @@ import {
     BrowserRouter as Router,
     Switch
 } from 'react-router-dom';
-import React, {Fragment, useEffect, useState} from 'react'
+import React, {Fragment, useEffect, useState, useContext} from 'react'
 
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
 import {db} from '../firebase';
+import {TeamContext} from '../context/TeamContext';
 
 const HeroDetail = () => {
 
+    const teamContext = useContext(TeamContext) //guardo context
     const {id} = useParams();
     const [baseUrl, setBaseUrl] = useState('https://www.superheroapi.com/api.php/10209071625985776/')
     const [hero, setHero] = useState()
@@ -25,7 +27,7 @@ const HeroDetail = () => {
 
         const res = await axios.get(baseUrl + id)
         .then(res => setHero(res.data))
-        
+        return hero;
         // console.log(res.data);
         // console.log("heros" + heros);
 
@@ -34,20 +36,8 @@ const HeroDetail = () => {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-            
-        const heros = db.collection("heros");
+        teamContext.add_hero(hero);
 
-        const newHero = {
-            hero
-        }
-        
-        heros.add(newHero).then(() => {
-            console.log('success'); //SUCCESS
-        }).catch(err => {
-            setError(err); //ERROR
-        }).finally(() => {
-            setLoading(false);
-        })
     }
 
     useEffect(() => {
@@ -57,7 +47,7 @@ const HeroDetail = () => {
             setBool(true);
 
         }
-
+        
         obtenerHero();
         
         
@@ -68,7 +58,7 @@ const HeroDetail = () => {
         <Fragment>
 
             {
-                
+
             bool == true ?
 
             <div id="main_detail_container" className="mt-5">

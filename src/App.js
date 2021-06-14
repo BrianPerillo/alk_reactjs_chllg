@@ -6,6 +6,8 @@ import './styles/login.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Fragment, React, useEffect, useState} from 'react';
 
+import {TeamProvider} from './context/TeamContext';
+
 import Card from './components/Card'
 import HeroDetail from './components/HeroDetail'
 import Login from './components/Login';
@@ -18,26 +20,11 @@ function App() {
 
   const [login, setLogin] = useState(false)
   const [loading, setLoading] = useState(true)
-  const [heros, setHeros] = useState([])
 
-  const getTeam = async () => {
-
-    db.collection('heros').onSnapshot((querySnapshot) => {
-     querySnapshot.forEach((doc) => {
-       var hero = doc.data()
-       hero.hero.doc_id = doc.id
-      //  console.log("herooo" + hero.hero.doc_id);
-       console.log(hero)
-       setHeros((heros) => heros.concat(hero))
-     });
-     setLoading(false)
-    });
-    
-   } 
 
    useEffect(() => {
 
-    getTeam();
+    
    
 
   }, [])
@@ -51,53 +38,55 @@ function App() {
     <BrowserRouter>
       
       <Switch>
-        
-        {/* Ruta para la home/index - La Home contiene un ListadoCards, el cual a su vez contiene Cards */}
+
+        <TeamProvider>
+          {/* Ruta para la home/index - La Home contiene un ListadoCards, el cual a su vez contiene Cards */}
 
 
-        <Route exact path="/">
+          <Route exact path="/">
 
-          {
-            //   login == false ? 
-            //   <Login setLogin={setLogin}/>
-            // : 
-              <Fragment>
-                <NavBar></NavBar>
-                <Team heros={heros}/>
-              </Fragment>
-          }
+            {
+              //   login == false ? 
+              //   <Login setLogin={setLogin}/>
+              // : 
+                <Fragment>
+                  <NavBar></NavBar>
+                  <Team/>
+                </Fragment>
+            }
 
-        </Route>
+          </Route>
 
-        <Route path="/search">
+          <Route path="/search">
 
-          {
-            //   login == false ? 
-            //   <Login setLogin={setLogin}/>
-            // : 
-              <Fragment>
-                <NavBar></NavBar>
-                <SearchHero/>
-              </Fragment>
-          }
+            {
+              //   login == false ? 
+              //   <Login setLogin={setLogin}/>
+              // : 
+                <Fragment>
+                  <NavBar></NavBar>
+                  <SearchHero/>
+                </Fragment>
+            }
 
-        </Route>
+          </Route>
 
-        <Route path="/hero_detail/:id">
+          <Route path="/hero_detail/:id">
 
-          {
-            //   login == false ? 
-            //     <Login setLogin={setLogin}/>
-            // : 
-              <Fragment>
-                <NavBar></NavBar>
-                <HeroDetail/>
-              </Fragment>
-          }
+            {
+              //   login == false ? 
+              //     <Login setLogin={setLogin}/>
+              // : 
+                <Fragment>
+                  <NavBar></NavBar>
+                  <HeroDetail/>
+                </Fragment>
+            }
 
-        </Route>
+          </Route>
 
 
+          </TeamProvider>
 
       </Switch>
 

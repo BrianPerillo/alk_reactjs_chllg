@@ -4,16 +4,24 @@ import {
     BrowserRouter as Router,
     Switch
 } from 'react-router-dom';
-import React, {Fragment, useEffect, useState} from 'react'
+import React, {Fragment, useEffect, useStat, useContext} from 'react'
+import {TeamContext} from '../context/TeamContext';
 
 const Card = (props) => {
 
+    const teamContext = useContext(TeamContext) //guardo context
 
     const handleOnSubmit = (e) => {
 
         e.preventDefault();
+
+        const delete_hero = async () => {
+            teamContext.deleteHero(props.hero.doc_id)
+        }
+
+        delete_hero();
         
-        props.deleteHero(props.hero.doc_id);
+        
     }
 
     useEffect(() => {
