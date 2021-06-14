@@ -18,17 +18,17 @@ function App() {
 
   const [login, setLogin] = useState(false)
   const [loading, setLoading] = useState(true)
-  const [team, setTeam] = useState([])
+  const [heros, setHeros] = useState([])
 
   const getTeam = async () => {
 
-    db.collection('team').onSnapshot((querySnapshot) => {
+    db.collection('heros').onSnapshot((querySnapshot) => {
      querySnapshot.forEach((doc) => {
        var hero = doc.data()
        hero.hero.doc_id = doc.id
       //  console.log("herooo" + hero.hero.doc_id);
        console.log(hero)
-       setTeam((team) => team.concat(hero))
+       setHeros((heros) => heros.concat(hero))
      });
      setLoading(false)
     });
@@ -63,7 +63,7 @@ function App() {
             // : 
               <Fragment>
                 <NavBar></NavBar>
-                <Team team={team}/>
+                <Team heros={heros}/>
               </Fragment>
           }
 
@@ -72,9 +72,9 @@ function App() {
         <Route path="/search">
 
           {
-              login == false ? 
-              <Login setLogin={setLogin}/>
-            : 
+            //   login == false ? 
+            //   <Login setLogin={setLogin}/>
+            // : 
               <Fragment>
                 <NavBar></NavBar>
                 <SearchHero/>
@@ -86,9 +86,9 @@ function App() {
         <Route path="/hero_detail/:id">
 
           {
-              login == false ? 
-                <Login setLogin={setLogin}/>
-            : 
+            //   login == false ? 
+            //     <Login setLogin={setLogin}/>
+            // : 
               <Fragment>
                 <NavBar></NavBar>
                 <HeroDetail/>

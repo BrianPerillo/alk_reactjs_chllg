@@ -8,6 +8,7 @@ import React, {Fragment, useEffect, useState} from 'react'
 
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
+import {db} from '../firebase';
 
 const HeroDetail = () => {
 
@@ -16,6 +17,8 @@ const HeroDetail = () => {
     const [hero, setHero] = useState()
     const [bool, setBool] = useState(false)
     const [detail, setDetail] = useState([])
+    const [error, setError] = useState()
+    const [loading, setLoading] = useState(true)
 
     
     const getHero = async (baseUrl) => {
@@ -28,12 +31,30 @@ const HeroDetail = () => {
 
     }
 
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+            
+        const heros = db.collection("heros");
+
+        const newHero = {
+            hero
+        }
+    
+        heros.add(newHero).then(() => {
+            console.log('success'); //SUCCESS
+        }).catch(err => {
+            setError(err); //ERROR
+        }).finally(() => {
+            setLoading(false);
+        })
+    }
+
     useEffect(() => {
 
         const obtenerHero = async () => {
             const res = await getHero(baseUrl)
             setBool(true);
-
 
         }
 
@@ -126,8 +147,11 @@ const HeroDetail = () => {
                             <div className="stats m-5">
                                 
                                 <button className="btn btn-danger">Remover del equipo</button>
-                                <button className="btn btn-success">Agregar al Equipo</button>
-    
+
+                                <form onSubmit={handleSubmit}>
+                                    <button className="btn btn-success">Agregar al Equipo</button>
+                                </form>
+
                             </div> 
                         
                         </div>

@@ -20,7 +20,7 @@ const Team = (props) => {
         <Fragment>
             
         {
-            props.team.map((hero) =>
+            props.heros.map((hero) =>
              <p>{hero.hero.name}</p>
             )
            
