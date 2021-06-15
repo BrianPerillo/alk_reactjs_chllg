@@ -170,11 +170,16 @@ header nav div .menu li ul li a:hover {
   #atributos {
     background-color: rgb(255, 255, 255);
     color: #4e4e4e;
-    padding: 30px;
+    padding: 14px;
     margin-top:20px;
     border-radius: 10px;
-    box-shadow: 3px 3px 5px #c5c5c5b0;
+    box-shadow: 3px 3px 5px #b8b8b8b0;
 
   }
+
+  /* #stats-first-col{
+    border-right: rgb(214, 214, 214) solid 1px;
+  } */
+
 
   

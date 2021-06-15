@@ -4,12 +4,12 @@ import {
     BrowserRouter as Router,
     Switch
 } from 'react-router-dom';
-import React, {Fragment, useEffect, useState, useContext} from 'react'
+import React, {Fragment, useContext, useEffect, useState} from 'react'
 
-import axios from 'axios';
-import {useParams} from 'react-router-dom';
-import {db} from '../firebase';
 import {TeamContext} from '../context/TeamContext';
+import axios from 'axios';
+import {db} from '../firebase';
+import {useParams} from 'react-router-dom';
 
 const HeroDetail = () => {
 
@@ -50,6 +50,8 @@ const HeroDetail = () => {
         
         obtenerHero();
         
+        teamContext.getTeam() // Cada vez que se cargue este componente consulta el team    
+        teamContext.getTeamSize()
         
     }, [teamContext.message])
 

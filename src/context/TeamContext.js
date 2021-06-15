@@ -1,4 +1,5 @@
 import {createContext, useEffect, useState} from 'react'
+
 import {db} from '../firebase';
 
 export const TeamContext = createContext([]);  //Creo un contexto y lo exporto
@@ -15,6 +16,7 @@ export const TeamProvider = ({children}) => {  //Creo proveedor que recive datos
   const [stats, setStats] = useState({})
   const [maxStat, setMaxStat] = useState({})
   const [deleteHeroBool, setDeleteHeroBool] = useState(false)
+  const [goodAlignment, setGoodAlignment] = useState()
   
   const getTeam = async () => {
     
@@ -32,7 +34,7 @@ export const TeamProvider = ({children}) => {  //Creo proveedor que recive datos
     //  setLoading(false)
 
     });
-
+    
 } 
 
 const getTeamSize = async () => {
@@ -45,6 +47,26 @@ const getTeamSize = async () => {
 
 };
 
+const getAlignment = () => {
+
+  var goodAlignmentCount = 0
+  var badAlignmentCount = 0
+
+  heros.map((res) => {
+    console.log("res" + res.hero.biography.alignment);
+    if(res.hero.biography.alignment == 'good'){
+      goodAlignmentCount = goodAlignmentCount + 1
+    }
+    else{
+      badAlignmentCount = badAlignmentCount + 1
+    }
+
+})
+
+
+
+  // setGoodAlignment()
+}
 
 const getStats = async () => {
 
@@ -101,33 +123,69 @@ const getStats = async () => {
 
 }
 
+const add_hero_to_db = async (hero) => {
+
+  const heros = db.collection("heros");
+
+  const newHero = {
+      hero
+  }
+
+  heros.add(newHero).then(() => {
+      console.log('success'); //SUCCESS
+  }).catch(err => {
+      setError(err); //ERROR
+  }).finally(() => {
+      setLoading(false);
+  })
+
+}
+
+
+
 const add_hero = async (hero) => {
-  setHeros([])
 
-  //Agrego un nuevo Hero, solo en caso de que el team tenga menos de 6 personajes
-  if(teamLength < 6){
+    setMessage('');
 
-    const heros = db.collection("heros");
+    var goodAlignmentCount = 0
+    var badAlignmentCount = 0
 
-    const newHero = {
-        hero
-    }
+    heros.map((res) => {
+
+      if(res.hero.biography.alignment == 'good'){
+        goodAlignmentCount = goodAlignmentCount + 1
+      }
+      else{
+        badAlignmentCount = badAlignmentCount + 1
+      }
+
+  })
+    
+    console.log(goodAlignmentCount + " " + badAlignmentCount);
+    
   
-    heros.add(newHero).then(() => {
-        console.log('success'); //SUCCESS
-    }).catch(err => {
-        setError(err); //ERROR
-    }).finally(() => {
-        setLoading(false);
-    })
+  //Agrego un nuevo Hero, solo en caso de que el team tenga menos de 6 personajes
 
-    setMessage(hero.name + ' se agregó a tu equipo')
+    if(teamLength < 6){ //Compruebo 
+
+      if(hero.biography.alignment == 'good' && goodAlignmentCount<3){
+        add_hero_to_db(hero);
+        setMessage(hero.name + ' se agregó a tu equipo')
+      }
+      else if(hero.biography.alignment == 'good' && goodAlignmentCount==3) {
+        setMessage('Tu equipo ya contiene la cantidad máxima de integrantes buenos')
+      }
+      else if(hero.biography.alignment == 'bad' && badAlignmentCount<3) {
+        add_hero_to_db(hero);
+        setMessage(hero.name + ' se agregó a tu equipo')
+      }
+      else if(hero.biography.alignment == 'bad' && badAlignmentCount==3) {
+        setMessage('Tu equipo ya contiene la cantidad máxima de integrantes malos')
+      }
 
   }
-  else {
-
+  else{
     setMessage('Tu equipo ya contiene la cantidad máxima de integrantes permitida')
-
   }
 
 }
@@ -142,7 +200,7 @@ const deleteHero = async (doc_id) => {
     .then(setHeros([]))
     .then(setTeamLength(teamLength-1))
 
-    setMessage('Hero eliminado')
+    // setMessage('Hero eliminado')
 }
 
 

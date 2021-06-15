@@ -25,8 +25,6 @@ const Team = (props) => {
         teamContext.setMessage('')
         teamContext.getStats()
 
-        console.log('log desde el team component');
-        console.log(teamContext.stats);
     }, [teamContext.deleteHeroBool])
 
     return ( 
@@ -84,8 +82,55 @@ const Team = (props) => {
                 }
 
                 {/*Cargo los personajes del team*/}
+                
                 <div className="row mt-5">   
-                   
+                    <div className="col-md-3">
+                     
+
+                            <div id="atributos">
+
+                                    <div className="col">
+                                        
+                                        <h4>Team Stats</h4>
+
+                                        <hr/>
+
+                                        <div id="all-stats" className="row">
+
+                                            <div id="stats-first-col" className="col">
+                                                <p style={{color:'red'}}><strong>Combat: {teamContext.stats.combat}</strong></p>
+                                                <p style={{color:'#1c98c2'}}><strong>Intelligence: {teamContext.stats.intelligence}</strong> </p>
+                                                <p style={{color:'green'}}><strong>Strength: {teamContext.stats.strength}</strong> </p>
+                                        
+                                            
+                                                <p style={{color:'orange'}} className="col"><strong>Power: {teamContext.stats.power}</strong> </p>
+                                                <p style={{color:'#64d2f7'}} className="col"><strong>Speed: {teamContext.stats.speed}</strong> </p>
+                                                <p style={{color:'#4e4e4e'}} className="col"><strong>Durability: {teamContext.stats.durability}</strong> </p>
+                                            </div>
+
+                                            <div id="stats-second-col" className="col">
+                                                
+                                                <p><strong>Peso promedio: XXX </strong></p>
+                                                <p><strong>Altura promedio: XXX </strong> </p>
+                                            </div>
+                                            
+                                        </div>
+
+                                        <hr/>
+
+                                        <h5>Main Stat: </h5>
+                                        <p className="col"><strong>{teamContext.maxStat.stat}</strong></p>
+                                        
+                                    </div>
+
+                                </div>
+
+                       
+                            
+                            
+                            
+                    </div>
+                    
                     {
 
                         teamContext.heros.map((hero) =>
@@ -97,47 +142,7 @@ const Team = (props) => {
                     }
 
                     {/*Cargo los stats del equipo*/}
-                    <div className="col-md-3">
-                    { 
-                        teamContext.teamLength > 0 ?
-
-                        <div id="atributos">
-
-                                <div className="col">
-                                    <h4>Team Stats</h4>
-                                    <hr />
-                                    <h5>Main Stat: </h5>
-                                    <p className="col"><strong>{teamContext.maxStat.stat}</strong></p>
-
-                                    <hr/>
-
-                                    <div id="all-stats" className="row">
-                                        <div className="col mb-2">
-                                            <h5>Other Stats: </h5>
-                                        </div>
-                                        
-                                        <div className="col">
-                                            <p style={{color:'red'}}><strong>Combat: {teamContext.stats.combat}</strong></p>
-                                            <p style={{color:'#1c98c2'}}><strong>Intelligence: {teamContext.stats.intelligence}</strong> </p>
-                                            <p style={{color:'green'}}><strong>Strength: {teamContext.stats.strength}</strong> </p>
-                                        </div>
-                                        <div className="col">
-                                            <p style={{color:'orange'}} className="col"><strong>Power: {teamContext.stats.power}</strong> </p>
-                                            <p style={{color:'#64d2f7'}} className="col"><strong>Speed: {teamContext.stats.speed}</strong> </p>
-                                            <p style={{color:'#4e4e4e'}} className="col"><strong>Durability: {teamContext.stats.durability}</strong> </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            :
-
-                             <p></p>
-                        
-                        
-                        }
-                    </div>
+                    
                 </div>
 
                 <div id="teamStats">
