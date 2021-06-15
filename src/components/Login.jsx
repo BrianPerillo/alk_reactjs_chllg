@@ -48,7 +48,7 @@ const Login = (props) => {
         }
         
     } 
-    }
+}
 
     useEffect(() => {
 
