@@ -100,7 +100,7 @@ const Team = (props) => {
 
                             teamContext.heros.map((hero) =>
 
-                            <Card hero={hero.hero} teamView={true} size={'col-md-4 p-3'}/>
+                            <Card hero={hero.hero} teamView={true} size={'col-sm-6 col-md-6 col-xl-4 p-3'}/>
 
                             )
                             
