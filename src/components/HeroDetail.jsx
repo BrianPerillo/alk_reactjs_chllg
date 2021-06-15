@@ -41,7 +41,7 @@ const HeroDetail = () => {
     }
 
     useEffect(() => {
-
+        
         const obtenerHero = async () => {
             const res = await getHero(baseUrl)
             setBool(true);
@@ -51,7 +51,7 @@ const HeroDetail = () => {
         obtenerHero();
         
         
-    }, [])
+    }, [teamContext.message])
 
     return ( 
 
@@ -62,6 +62,21 @@ const HeroDetail = () => {
             bool == true ?
 
             <div id="main_detail_container" className="mt-5">
+
+                {/* Alert */}
+                    {
+                        teamContext.message.length>0 ? 
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>{teamContext.message}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            :
+                            <div></div>
+                    }
+                {/* Fin Alert */}
+
                 <div className="col-md-7 col-lg-8 col-xl-4 p-3 m-auto">
                     
                     <div className="profile-card-1">
@@ -137,14 +152,13 @@ const HeroDetail = () => {
 
                             <div className="stats m-5">
                                 
-                                <button className="btn btn-danger">Remover del equipo</button>
 
                                 <form onSubmit={handleSubmit}>
                                     <button className="btn btn-success">Agregar al Equipo</button>
                                 </form>
-
+                                
                             </div> 
-                        
+    
                         </div>
                 
                     

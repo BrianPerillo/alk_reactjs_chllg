@@ -26,6 +26,7 @@ const Card = (props) => {
 
     useEffect(() => {
 
+        teamContext.setMessage('')
 
     }, [])
 
