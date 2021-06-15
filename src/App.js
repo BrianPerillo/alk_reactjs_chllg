@@ -42,9 +42,9 @@ function App() {
           <Route exact path="/">
 
             {
-              //   login == false ? 
-              //   <Login setLogin={setLogin}/>
-              // : 
+                login == false ? 
+                <Login setLogin={setLogin}/>
+              : 
                 <Fragment>
                   <NavBar></NavBar>
                   <Team/>
@@ -57,9 +57,9 @@ function App() {
           <Route path="/search">
 
             {
-              //   login == false ? 
-              //   <Login setLogin={setLogin}/>
-              // : 
+                login == false ? 
+                <Login setLogin={setLogin}/>
+              : 
                 <Fragment>
                   <NavBar></NavBar>
                   <SearchHero/>
@@ -72,9 +72,9 @@ function App() {
           <Route path="/hero_detail/:id">
 
             {
-              //   login == false ? 
-              //     <Login setLogin={setLogin}/>
-              // : 
+                login == false ? 
+                  <Login setLogin={setLogin}/>
+              : 
                 <Fragment>
                   <NavBar></NavBar>
                   <HeroDetail/>
