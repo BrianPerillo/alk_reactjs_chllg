@@ -6,14 +6,13 @@ import './styles/login.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Fragment, React, useEffect, useState} from 'react';
 
-import {TeamProvider} from './context/TeamContext';
-
 import Card from './components/Card'
 import HeroDetail from './components/HeroDetail'
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import SearchHero from './components/SearchHero'
 import Team from './components/Team';
+import {TeamProvider} from './context/TeamContext';
 import {db} from './firebase';
 
 function App() {
@@ -29,10 +28,7 @@ function App() {
 
   }, [])
 
-  // if(){
-  //   console.log("team" + team.hero.name);
-  // }
-
+ 
   return (
 
     <BrowserRouter>
@@ -40,9 +36,8 @@ function App() {
       <Switch>
 
         <TeamProvider>
+
           {/* Ruta para la home/index - La Home contiene un ListadoCards, el cual a su vez contiene Cards */}
-
-
           <Route exact path="/">
 
             {

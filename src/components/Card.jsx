@@ -4,7 +4,8 @@ import {
     BrowserRouter as Router,
     Switch
 } from 'react-router-dom';
-import React, {Fragment, useEffect, useStat, useContext} from 'react'
+import React, {Fragment, useContext, useEffect, useStat} from 'react'
+
 import {TeamContext} from '../context/TeamContext';
 
 const Card = (props) => {

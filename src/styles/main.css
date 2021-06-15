@@ -152,4 +152,29 @@ header nav div .menu li ul li a:hover {
   
   }
   .menu ul li:last-child a { border: none; }
+
+  /* Atributos Home */
+
+  #atributos div h4{
+    text-align: center;
+  }
+
+  #atributos div h5{
+    text-align: center;
+  }
+
+  #atributos div p{
+    text-align: center;
+  }
+
+  #atributos {
+    background-color: rgb(255, 255, 255);
+    color: #4e4e4e;
+    padding: 30px;
+    margin-top:20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #c5c5c5b0;
+
+  }
+
   

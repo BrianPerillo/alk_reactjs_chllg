@@ -1,16 +1,16 @@
 import {
     Link,
+    NavLink,
     Route,
     BrowserRouter as Router,
-    Switch,
-    NavLink
+    Switch
 } from 'react-router-dom';
-import React, {Fragment, useEffect, useState, useContext} from 'react'
-import {db} from '../firebase';
-import Card from './Card'
+import React, {Fragment, useContext, useEffect, useState} from 'react'
 
+import Card from './Card'
 import ListadoCards from '../components/ListadoCards'
 import {TeamContext} from '../context/TeamContext';
+import {db} from '../firebase';
 
 const Team = (props) => {
 
@@ -51,34 +51,24 @@ const Team = (props) => {
                     }
 
                 {/* Fin Alert */}
-                <div className="col d-flex justify-content-center mt-5">
-                        <h2>Atributos del equipo Equipo: </h2>
-                </div>
+
+                {/*Muestro atributo principal*/}
 
                 {
                         teamContext.loading == false ?
-                        <div>
+                        
+                            <div className="col d-flex justify-content-center mt-5">
+                                <h2> {teamContext.maxStat.stat} team</h2>
+                            </div>
+                        : 
 
-                            <div className="row">
-                                <p className="col">Combat: {teamContext.stats.combat}</p>
-                                <p className="col">Intelligence: {teamContext.stats.intelligence} </p>
-                                <p className="col">Strength: {teamContext.stats.strength} </p>
-                                <p className="col">Power: {teamContext.stats.power} </p>
-                                <p className="col">Speed: {teamContext.stats.speed} </p>
-                                <p className="col">Durability: {teamContext.stats.durability} </p>
+                            <div className="col d-flex justify-content-center mt-5">
+                                <h2>Cargando atributo principal...</h2>
                             </div>
 
-                            <div className="col">
-                                <h4>Atributos Principal: </h4>
-                                <p className="col">{teamContext.maxStat.stat}: {teamContext.maxStat.power} </p>
-                            </div>
-
-                        </div>
-
-                        :
-
-                        <p>Loading...</p>
                 }
+        
+                {/*Si el equipo no está completo muestro botón para agregar personajes*/}
 
                 {
                         teamContext.heros.length < 6 ?
@@ -93,8 +83,8 @@ const Team = (props) => {
                             <span></span>
                 }
 
+                {/*Cargo los personajes del team*/}
                 <div className="row mt-5">   
-                {/* <p>{teamContext.teamLength}</p> */}
                    
                     {
 
@@ -105,6 +95,49 @@ const Team = (props) => {
                         )
                     
                     }
+
+                    {/*Cargo los stats del equipo*/}
+                    <div className="col-md-3">
+                    { 
+                        teamContext.teamLength > 0 ?
+
+                        <div id="atributos">
+
+                                <div className="col">
+                                    <h4>Team Stats</h4>
+                                    <hr />
+                                    <h5>Main Stat: </h5>
+                                    <p className="col"><strong>{teamContext.maxStat.stat}</strong></p>
+
+                                    <hr/>
+
+                                    <div id="all-stats" className="row">
+                                        <div className="col mb-2">
+                                            <h5>Other Stats: </h5>
+                                        </div>
+                                        
+                                        <div className="col">
+                                            <p style={{color:'red'}}><strong>Combat: {teamContext.stats.combat}</strong></p>
+                                            <p style={{color:'#1c98c2'}}><strong>Intelligence: {teamContext.stats.intelligence}</strong> </p>
+                                            <p style={{color:'green'}}><strong>Strength: {teamContext.stats.strength}</strong> </p>
+                                        </div>
+                                        <div className="col">
+                                            <p style={{color:'orange'}} className="col"><strong>Power: {teamContext.stats.power}</strong> </p>
+                                            <p style={{color:'#64d2f7'}} className="col"><strong>Speed: {teamContext.stats.speed}</strong> </p>
+                                            <p style={{color:'#4e4e4e'}} className="col"><strong>Durability: {teamContext.stats.durability}</strong> </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            :
+
+                             <p></p>
+                        
+                        
+                        }
+                    </div>
                 </div>
 
                 <div id="teamStats">
