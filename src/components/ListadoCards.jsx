@@ -46,7 +46,7 @@ const ListadoCards = (props) => {
                         {
                             props.heros.map((hero) =>
 
-                                <Card hero={hero}/>
+                                <Card hero={hero} size={'col-md-3 p-3'}/>
 
                             )
                         }

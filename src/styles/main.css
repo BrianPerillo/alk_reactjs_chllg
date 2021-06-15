@@ -171,9 +171,10 @@ header nav div .menu li ul li a:hover {
     background-color: rgb(255, 255, 255);
     color: #4e4e4e;
     padding: 14px;
-    margin-top:20px;
+    margin-top:5vh;
     border-radius: 10px;
-    box-shadow: 3px 3px 5px #b8b8b8b0;
+    /* box-shadow: 3px 3px 5px #b8b8b8b0; */
+    height: 500px;
 
   }
 
@@ -182,4 +183,13 @@ header nav div .menu li ul li a:hover {
   } */
 
 
-  
+#add-from-home-button{
+  color:orange;
+  background-color:rgb(255, 255, 255);
+  border-radius: 15px;
+}
+
+#add-from-home-button:hover{
+  color:rgb(255, 255, 255);
+  background-color:orange;
+}

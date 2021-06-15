@@ -34,7 +34,7 @@ const Card = (props) => {
     return ( 
         <Fragment>
             
-            <div className="col-md-3 p-3">
+            <div className={props.size}>
                 <div className="profile-card-1">
                 
                     <div className="img">

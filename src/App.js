@@ -2,11 +2,13 @@ import './styles/main.css';
 import './styles/cards.css';
 import './styles/detailcard.css';
 import './styles/login.css';
+import './styles/footer.css';
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Fragment, React, useEffect, useState} from 'react';
 
 import Card from './components/Card'
+import Footer from './components/Footer';
 import HeroDetail from './components/HeroDetail'
 import Login from './components/Login';
 import NavBar from './components/NavBar';
@@ -46,6 +48,7 @@ function App() {
                 <Fragment>
                   <NavBar></NavBar>
                   <Team/>
+                  <Footer/>
                 </Fragment>
             }
 
@@ -60,6 +63,7 @@ function App() {
                 <Fragment>
                   <NavBar></NavBar>
                   <SearchHero/>
+                  <Footer/>
                 </Fragment>
             }
 
@@ -74,6 +78,7 @@ function App() {
                 <Fragment>
                   <NavBar></NavBar>
                   <HeroDetail/>
+                  <Footer/>
                 </Fragment>
             }
 

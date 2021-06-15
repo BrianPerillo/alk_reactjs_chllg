@@ -15,9 +15,9 @@ const NavBar = (props) => {
                         <div className="col-md-4">
                             <h1 hidden></h1>
                         
-                            <div>
+                            <div> {/*Sección Logo*/}
                                 <a href="">
-                                    <Link to={'/'}><img style={{width:"85px"}} src="https://image.freepik.com/vector-gratis/logotipo-cubo-generico_9569-169.jpg"/></Link>
+                                    <Link to={'/'}><img style={{width:"85px"}} src=""/></Link>
                                 </a>
                                 <span></span>
                             </div>
@@ -26,21 +26,15 @@ const NavBar = (props) => {
                         <div id="categorias" className="col-md-6">
 
                             <ul className="menu menu m-0">
-                            <NavLink to={`/search`}><li className=""> Buscar Heros
+                            <NavLink to={`/`}><li className=""> Team
                                     <ul className="pb-2">
-                                        {/* <li className="p-1"><a href="">Lorem</a></li>
-                                        <li className="p-1"><a href="">Lorem</a></li>
-                                        <li className="p-1"><a href="">Lorem</a></li> */}
                                     </ul>
                                 </li></NavLink>
                             </ul>
 
                             <ul className="menu menu m-0">
-                            <NavLink to={`/category/2`}><li className=""> Categroy 2
+                            <NavLink to={`/search`}><li className=""> Buscar Heros
                                     <ul className="pb-2">
-                                        {/* <li className="p-1"><a href="">Ipsum</a></li>
-                                        <li className="p-1"><a href="">Ipsum</a></li>
-                                        <li className="p-1"><a href="">Ipsum</a></li> */}
                                     </ul>
                                 </li></NavLink>
                             </ul>

@@ -30,7 +30,7 @@ const Team = (props) => {
     return ( 
         <Fragment>
 
-            <div className="container">
+            <div id="team-container" className="container">
                 {/* Alert */}
 
                     {
@@ -45,7 +45,7 @@ const Team = (props) => {
 
                                 :
 
-                                <div></div>
+                            <div></div>
                     }
 
                 {/* Fin Alert */}
@@ -61,7 +61,7 @@ const Team = (props) => {
                         : 
 
                             <div className="col d-flex justify-content-center mt-5">
-                                <h2>Cargando atributo principal...</h2>
+                                <h2>team</h2>
                             </div>
 
                 }
@@ -72,7 +72,11 @@ const Team = (props) => {
                         teamContext.heros.length < 6 ?
                             <div className="col d-flex justify-content-center mt-5">
                                     <NavLink to={`/search`}>
-                                        <button className="btn btn-primary">Agregar Hero</button>
+                                        <button className="btn btn-propio">
+                                            <a className="view-more">
+                                                <i id="add-from-home-button" className="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+                                            </a>
+                                        </button>
                                     </NavLink>
                             </div>
 
@@ -81,79 +85,68 @@ const Team = (props) => {
                             <span></span>
                 }
 
-                {/*Cargo los personajes del team*/}
-                
-                <div className="row mt-5">   
-                    <div className="col-md-3">
-                     
+                {/*Cargo los stats y personajes del Team*/}
+                <div className='row'>
 
-                            <div id="atributos">
 
-                                    <div className="col">
-                                        
-                                        <h4>Team Stats</h4>
+                    <div id="atributos" className='col-md-3'>
 
-                                        <hr/>
+                        <div className="col">
+                            
+                            <h4>Team Stats</h4>
 
-                                        <div id="all-stats" className="row">
+                            <hr/>
 
-                                            <div id="stats-first-col" className="col">
-                                                <p style={{color:'red'}}><strong>Combat: {teamContext.stats.combat}</strong></p>
-                                                <p style={{color:'#1c98c2'}}><strong>Intelligence: {teamContext.stats.intelligence}</strong> </p>
-                                                <p style={{color:'green'}}><strong>Strength: {teamContext.stats.strength}</strong> </p>
-                                        
-                                            
-                                                <p style={{color:'orange'}} className="col"><strong>Power: {teamContext.stats.power}</strong> </p>
-                                                <p style={{color:'#64d2f7'}} className="col"><strong>Speed: {teamContext.stats.speed}</strong> </p>
-                                                <p style={{color:'#4e4e4e'}} className="col"><strong>Durability: {teamContext.stats.durability}</strong> </p>
-                                            </div>
+                            <div id="all-stats" className="row">
 
-                                            <div id="stats-second-col" className="col">
-                                                
-                                                <p><strong>Peso promedio: XXX </strong></p>
-                                                <p><strong>Altura promedio: XXX </strong> </p>
-                                            </div>
-                                            
-                                        </div>
-
-                                        <hr/>
-
-                                        <h5>Main Stat: </h5>
-                                        <p className="col"><strong>{teamContext.maxStat.stat}</strong></p>
-                                        
-                                    </div>
-
+                                <div id="stats-first-col" className="col">
+                                    <p style={{color:'red'}}><strong>Combat: <p>{teamContext.stats.combat}</p></strong></p>
+                                    <p style={{color:'#1c98c2'}}><strong>Intelligence: <p>{teamContext.stats.intelligence}</p></strong> </p>
+                                    <p style={{color:'green'}}><strong>Strength: <p>{teamContext.stats.strength}</p></strong></p>
+                            
+                                
+                                    <p style={{color:'orange'}} className="col"><strong>Power: <p>{teamContext.stats.power}</p> </strong></p>
+                                    <p style={{color:'#64d2f7'}} className="col"><strong>Speed: <p>{teamContext.stats.speed}</p></strong> </p>
+                                    <p style={{color:'#4e4e4e'}} className="col"><strong>Durability: <p>{teamContext.stats.durability}</p></strong> </p>
                                 </div>
 
-                       
+                                <div id="stats-second-col" className="col">
+                                    
+                                    <p><strong>Peso promedio: {Math.round(teamContext.stats.weight/teamContext.teamLength)} kg </strong></p>
+                                    <p><strong>Altura promedio: {Math.round(teamContext.stats.height/teamContext.teamLength)} cm </strong> </p>
+                                </div>
+                                
+                            </div>
+
+                            <hr/>
+
+                            <h5>Main Stat: </h5>
+                            <p className="col"><strong>{teamContext.maxStat.stat}</strong></p>
                             
+                        </div>
+                    </div>
+
+                    <div className="col mt-5">   
+
+                        <div className="row">
                             
+                        {
+
+                            teamContext.heros.map((hero) =>
+
+                            <Card hero={hero.hero} teamView={true} size={'col-md-4 p-3'}/>
+
+                            )
+                            
+                        }
+
+                        </div>
+
+                        {/*Cargo los stats del equipo*/}
                             
                     </div>
-                    
-                    {
-
-                        teamContext.heros.map((hero) =>
-
-                         <Card hero={hero.hero} teamView={true} />
-
-                        )
-                    
-                    }
-
-                    {/*Cargo los stats del equipo*/}
-                    
-                </div>
-
-                <div id="teamStats">
-
-                {/* {
-                    teamContext.state.map((state) =>
-                        <p>{state}</p>
-                    )
-                } */}
-
-                </div>
+                </div> 
+                   
             </div>   
 
         </Fragment>

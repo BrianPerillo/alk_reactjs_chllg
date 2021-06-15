@@ -68,11 +68,8 @@ const HeroDetail = () => {
                 {/* Alert */}
                     {
                         teamContext.message.length>0 ? 
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="alert alert-success" role="alert">
                                 <strong>{teamContext.message}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
                             </div>
                             :
                             <div></div>
@@ -146,6 +143,14 @@ const HeroDetail = () => {
                                     <p><strong> Lugar de Trabjo: </strong></p>
                                         <p>
                                             <span>{hero.work.base}</span>
+                                        </p> 
+                                </div>
+
+                                {/*LUGAR DE TRABAJO*/}
+                                <div id="Alias" className="col">
+                                    <p><strong> Alignment: </strong></p>
+                                        <p>
+                                            <span>{hero.biography.alignment}</span>
                                         </p> 
                                 </div>
                                 
