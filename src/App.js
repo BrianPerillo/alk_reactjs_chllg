@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import HeroDetail from './components/HeroDetail'
 import Login from './components/Login';
 import NavBar from './components/NavBar';
-import SearchHero from './components/SearchHero'
+import SearchHero from './components/SearchHero';
 import Team from './components/Team';
 import {TeamProvider} from './context/TeamContext';
 import {db} from './firebase';
